@@ -10,17 +10,17 @@ describe("test suite", () => {
 })
 
 
-// describe("test suite", function () {
-//     it("homepage should display", function () {
-//         cy.visit("https://qa.bitdelta.com/en/nomination")
+describe("test suite", function () {
+    it("homepage should display", function () {
+        cy.visit("https://qa.bitdelta.com/en/nomination")
       
-//     })
+    })
 
-//     it("Add nominee button should be clicked",() => {
-//         cy.visit("https://qa.bitdelta.com/en/nomination")
-//         cy.get('.css-48oap0 > .chakra-button').click
-//     })
-// })
+    it("Add nominee button should be clicked",() => {
+        cy.visit("https://qa.bitdelta.com/en/nomination")
+        cy.get('.css-48oap0 > .chakra-button').click
+    })
+})
 
 describe('Tutorialspoint Test', function () {
     // test case
