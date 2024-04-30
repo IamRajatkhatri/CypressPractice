@@ -22,14 +22,14 @@ describe("test suite", () => {
 //     })
 // })
 
-// describe('Tutorialspoint Test', function () {
-//     // test case
-//     it('Scenario 1', function (){
-//        // launch URL
-//        cy.visit("https://www.letskodeit.com/practice");
-//        // show hidden element with invoke
-//        cy.get('div.mouse-hover-content').invoke('show');
-//        //click hidden element
-//        cy.contains('Top').click();
-//     });
-//  });
+describe('Tutorialspoint Test', function () {
+    // test case
+    it('Scenario 1', function (){
+       // launch URL
+       cy.visit("https://www.letskodeit.com/practice");
+       // show hidden element with invoke
+       cy.get('div.mouse-hover-content').invoke('show');
+       //click hidden element
+       cy.contains('Top').click();
+    });
+ });
