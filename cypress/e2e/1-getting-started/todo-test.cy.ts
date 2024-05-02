@@ -58,3 +58,18 @@ describe('Tutorialspoint Test', function () {
     });
   });
 
+  context('Blog tests', () => {
+    it('Open homepage', () => {
+        cy.visit('https://agilecoding.io');
+        cy.get('.blog-title').should('contain.text', "Agile Coding")
+    });
+
+    it("Search article", () => {
+        cy.visit('https://agilecoding.io');
+       // cy.get('#__next > div > header > div > div.relative.z-40.flex.flex-row.items-center.justify-between.pb-2.pt-8.md\:mb-4 > div.flex.flex-row.items-center.dark\:text-white > button.blog-search-button.focus-ring-base.flex.flex-row.items-center.rounded-full.font-medium.transition.duration-100.ease-in-out.focus-ring-colors-base.hover\:bg-black\/10.dark\:hover\:bg-white\/20.mr-2.p-2').click()
+        //cy.get('#radix-\:rj\: > div.relative.mb-2.w-full.md\:mb-4 > input"]').type("Hello")
+       // cy.get('#radix-\:rj\: > div.relative.mb-2.w-full.md\:mb-4 > input').parent().siblings().children('a').first().click()
+       // cy.get('[data-query="post-title"]').should('have.text', 'Hello AgileCoding.io')
+    })
+})
+
