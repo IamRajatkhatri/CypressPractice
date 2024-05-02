@@ -1,3 +1,5 @@
+import search from "../../PageObjects/google.search.page"
+
 
 describe("test suite", () => {
     it("Login Sucessfully", () => {
@@ -33,3 +35,12 @@ describe('Tutorialspoint Test', function () {
        cy.contains('Top').click();
     });
  });
+
+ describe('Google Navigation', () => {
+    it('Google Search', () => {
+    cy.visit('https://www.google.com')
+   //search.googleSearch.type("Something");
+    //search.googleSearchBtn.click({force:true});
+   // search.searchResults.should('be.visible');
+    });
+});
