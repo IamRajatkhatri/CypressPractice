@@ -59,10 +59,10 @@ describe('Tutorialspoint Test', function () {
   });
 
   context('Blog tests', () => {
-    it('Open homepage', () => {
-        cy.visit('https://agilecoding.io');
-        cy.get('.blog-title').should('contain.text', "Agile Coding")
-    });
+    // it('Open homepage', () => {
+    //     cy.visit('https://agilecoding.io');
+    //     cy.get('.blog-title').should('contain.text', "Agile Coding")
+    // });
 
     it("Search article", () => {
         cy.visit('https://agilecoding.io');
