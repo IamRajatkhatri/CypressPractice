@@ -7,22 +7,22 @@ describe("test suite", () => {
         cy.title().should('eq', 'OrangeHRM')
         cy.get(':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input').type('Admin')
         cy.get(':nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-input').type('admin123')
-        cy.get('.oxd-button').click
+        cy.get('.oxd-button').click()
     })
 })
 
 
-describe("test suite", function () {
-   // it("homepage should display", function () {
-   //     cy.visit("https://qa.bitdelta.com/en/nomination")
+// describe("test suite", function () {
+//    // it("homepage should display", function () {
+//    //     cy.visit("https://qa.bitdelta.com/en/nomination")
       
-   // })
+//    // })
 
-    it("Add nominee button should be clicked",() => {
-        cy.visit("https://qa.bitdelta.com/en/nomination")
-        cy.get('.css-48oap0 > .chakra-button').click
-    })
-})
+//     it("Add nominee button should be clicked",() => {
+//         cy.visit("https://qa.bitdelta.com/en/nomination")
+//         cy.get('.css-48oap0 > .chakra-button').click
+//     })
+// })
 
  
 describe('Tutorialspoint Test', function () {
@@ -56,6 +56,35 @@ describe('Tutorialspoint Test', function () {
 //        //click hidden element
         cy.contains('Top').click();
     });
+    
+    it('Test Case2', function (){
+        cy.visit("https://www.tutorialspoint.com/selenium/selenium_automation_practice.htm");
+        // checking by values
+        cy.get('#practiceForm > div:nth-child(8) > div > div > div:nth-child(3) > input')
+        .check();
+        // unchecking all values
+        cy.get(':checkbox').uncheck();
+        // checking and assertion combined with and()
+        cy.get('#practiceForm > div:nth-child(8) > div > div > div:nth-child(3) > input')
+        .should('be.visible')
+        .invoke('val')
+        .should('equal', 'on');
+        // unchecking and assertion combined with and()
+        cy.get('#practiceForm > div:nth-child(8) > div > div > div:nth-child(3) > input')
+        .uncheck().should('not.be.checked');
+     });
+
+    it('Test Case3', function (){
+        // launch the url
+        cy.visit("https://register.rediff.com/register/register.php?FormName=user_details");
+        // click on submit button to produce the alert pop up
+        cy.get('input[type="submit"]').click();
+         // firing window: alert event with on() method
+        cy.on('window:alert',(txt)=>{
+            //Mocha assertions
+            expect(txt).to.contains('Your full name cannot be blank.');
+         })
+     });
   });
 
   context('Blog tests', () => {
@@ -70,6 +99,42 @@ describe('Tutorialspoint Test', function () {
         //cy.get('#radix-\:rj\: > div.relative.mb-2.w-full.md\:mb-4 > input"]').type("Hello")
        // cy.get('#radix-\:rj\: > div.relative.mb-2.w-full.md\:mb-4 > input').parent().siblings().children('a').first().click()
        // cy.get('[data-query="post-title"]').should('have.text', 'Hello AgileCoding.io')
+    })
+})
+describe('Example to demonstrate commonly used JQuery commands in cypress', () => {
+
+    it('Check if a button is disabled or enabled', function () {
+        cy.visit('https://getbootstrap.com/docs/4.0/components/buttons/#disabled-state')
+        cy.get('button.btn.btn-lg.btn-primary').eq(2).then(($btn) => {
+            if ($btn.is(':disabled')) { cy.log('Button is disabled') }
+            else { cy.log('Button is enabled') }
+        })
+        cy.get('button.btn.btn-lg.btn-primary').eq(1).then(($btn) => {
+            if ($btn.is(':enabled')) { cy.log('Button is enabled') }
+            else { cy.log('Button is disabled') }
+        })
+    })
+
+    it('Remove the disabled attribute and validate that button is enabled now', function () {
+        cy.visit('https://getbootstrap.com/docs/4.0/components/buttons/#disabled-state')
+        cy.get('button.btn.btn-lg.btn-primary').eq(2).then(($btn) => {
+            cy.wrap($btn.removeAttr('disabled')).should('be.enabled')
+        })
+    })
+
+    it('Assert inner text', function () {
+        cy.visit('https://testautomationpractice.blogspot.com/')
+        cy.get('h2.title').eq(0).then(($ele: JQuery<HTMLElement>) => {
+            expect($ele.text()).to.equal('Web Table')
+        })
+    })
+
+
+    it('Assert CSS property', function () {
+        cy.visit('https://the-internet.herokuapp.com/tables')
+        cy.get('table#table1').then(($ele: JQuery<HTMLElement>) => {
+            expect($ele.css('margin-bottom')).to.equal('20px')
+        })
     })
 })
 
