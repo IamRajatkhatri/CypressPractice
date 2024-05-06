@@ -1,7 +1,7 @@
 import search from "../../PageObjects/google.search.page"
 
 
-describe("test suite", () => {
+describe("test suite 1", () => {
     it("Login Sucessfully", () => {
         cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
         cy.title().should('eq', 'OrangeHRM')
@@ -10,6 +10,25 @@ describe("test suite", () => {
         cy.get('.oxd-button').click()
     })
 })
+
+describe("test suite 2", () => {
+    it("validating dropdown", () => {
+        cy.visit("https://demo.automationtesting.in/Register.html");
+     
+        cy.get('#msdd').click();
+        cy.get('.ui-corner-all').contains('Arabic').click();
+        cy.get('.ui-corner-all').contains('Dutch').click();
+        cy.get("span[role='combobox']").click({force:true});
+        cy.get("input[role='textbox']").type('Den');
+        cy.get("input[role='textbox']").type('{enter}');
+    });
+
+    it('Explains country dropdown', () => {
+        cy.visit("https://demo.automationtesting.in/Register.html");
+     
+       
+    });
+});
 
 
 // describe("test suite", function () {
