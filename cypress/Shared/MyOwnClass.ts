@@ -9,4 +9,8 @@ export class MyOwnClass {
     public static DoSomeMath(first: number, second: number): number {
         return first + second;
     }
+
+
+    
 }
+
