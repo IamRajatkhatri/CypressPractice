@@ -161,7 +161,7 @@ describe("Example to demonstrate commonly used JQuery commands in cypress", () =
   });
 });
 
-describe.only("Autocomplete functionality", () => {
+describe("Autocomplete functionality", () => {
   beforeEach(() => {
     cy.viewport(1024, 768)
     cy.visit("https://demo.automationtesting.in/Register.html");
@@ -187,7 +187,7 @@ describe.only("Autocomplete functionality", () => {
 
   })
 
-  it.only("Should validate " , () => {
+  it("Should validate CKEditor page working " , () => {
     cy.get('#header > nav > div > div.navbar-collapse.collapse.navbar-right > ul > li:nth-child(8) > a').click();
     cy.get("#header > nav > div > div.navbar-collapse.collapse.navbar-right > ul > li.dropdown.open > ul > li:nth-child(2) > a").click();
     cy.wait(2000);
