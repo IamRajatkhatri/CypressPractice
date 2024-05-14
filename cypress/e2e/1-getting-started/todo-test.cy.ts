@@ -33,16 +33,14 @@ describe("test suite 2", () => {
   });
 });
 
-
-
 describe("Tutorialspoint Test", function () {
-  // test case
+ 
   it("Scenario 1", function () {
-    // launch URL
+
     cy.visit("https://www.letskodeit.com/practice");
-    // show hidden element with invoke
+   
     cy.get("div.mouse-hover-content").invoke("show");
-    //click hidden element
+  
     cy.contains("Top").click();
   });
 });
@@ -57,13 +55,13 @@ describe("Google Navigation", () => {
 });
 
 describe("Tutorialspoint Test", function () {
-  //     // test case
+
   it("Scenario 1", function () {
-    //        // launch URL
+   
     cy.visit("https://www.letskodeit.com/practice");
-    //        // show hidden element with invoke
+    
     cy.get("div.mouse-hover-content").invoke("show");
-    //        //click hidden element
+  
     cy.contains("Top").click();
   });
 
@@ -71,20 +69,20 @@ describe("Tutorialspoint Test", function () {
     cy.visit(
       "https://www.tutorialspoint.com/selenium/selenium_automation_practice.htm"
     );
-    // checking by values
+   
     cy.get(
       "#practiceForm > div:nth-child(8) > div > div > div:nth-child(3) > input"
     ).check();
-    // unchecking all values
+   
     cy.get(":checkbox").uncheck();
-    // checking and assertion combined with and()
+   
     cy.get(
       "#practiceForm > div:nth-child(8) > div > div > div:nth-child(3) > input"
     )
       .should("be.visible")
       .invoke("val")
       .should("equal", "on");
-    // unchecking and assertion combined with and()
+  
     cy.get(
       "#practiceForm > div:nth-child(8) > div > div > div:nth-child(3) > input"
     )
@@ -97,11 +95,11 @@ describe("Tutorialspoint Test", function () {
     cy.visit(
       "https://register.rediff.com/register/register.php?FormName=user_details"
     );
-    // click on submit button to produce the alert pop up
+   
     cy.get('input[type="submit"]').click();
-    // firing window: alert event with on() method
+  
     cy.on("window:alert", (txt) => {
-      //Mocha assertions
+    
       expect(txt).to.contains("Your full name cannot be blank.");
     });
   });
@@ -194,3 +192,22 @@ describe("Autocomplete functionality", () => {
     //cy.get(".cke_wysiwyg_frame").type("I am automation engineer");
   })
 });
+
+
+describe('Handling multiple windows', () => {
+  // beforeEach(() => {
+  //   cy.disableXhrAndLogs();
+  // });
+  it('should switch to the second window', () => {
+    cy.visit('https://the-internet.herokuapp.com/windows');
+    cy.get('#content > div > a').invoke('removeAttr', 'target').click();
+    cy.window().then((win) => {
+      const secondWindowUrl = win.location.href;
+      expect(secondWindowUrl).to.include('/windows');
+      win.close();
+    });
+  });
+});
+
+
+
