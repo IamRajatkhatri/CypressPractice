@@ -1,4 +1,5 @@
 import search from "../../PageObjects/google.search.page";
+import '@4tw/cypress-drag-drop';
 
 describe("test suite 1", () => {
   it("Login Sucessfully", () => {
@@ -208,6 +209,40 @@ describe('Handling multiple windows', () => {
     });
   });
 });
+
+describe('Valiadting heading of sign up page', () => {
+  it('Scenario 1', () => {
+    cy.visit("https://accounts.google.com");
+    cy.get('.Tn0LBd').should('contain', 'Sign'); 
+    cy.log("Validation complete")
+  });
+});
+
+describe('iframe validation', () => {
+  it('Test Case 1', () => {
+     cy.visit("https://jqueryui.com/draggable/");
+     cy.frameLoaded('.demo-frame');
+     cy.iframe('.demo-frame').find("#draggable").then((t) => {
+        const frmtxt = t.text();
+        expect(frmtxt).to.contains('Drag me around');
+        cy.log(frmtxt);
+     });
+  });
+});
+
+describe('Validation of alert', () => {
+  it("Scenario 1", () => {
+     cy.visit("https://the-internet.herokuapp.com/javascript_alerts");
+     cy.get(':nth-child(2) > button').click();
+     cy.on("window:confirm", (t: string) => {
+     expect(t).to.equal("I am a JS Confirm");
+     });
+  });
+});
+
+
+
+
 
 
 
