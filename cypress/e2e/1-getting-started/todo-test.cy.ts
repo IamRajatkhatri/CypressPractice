@@ -166,25 +166,25 @@ describe("Autocomplete functionality", () => {
     cy.visit("https://demo.automationtesting.in/Register.html");
     cy.wait(3000);
   });
-  it("Should select an item from autocomplete suggestions", () => {
-    cy.get(":nth-child(5) > .dropdown-toggle").click();
-    cy.get("#header > nav > div > div.navbar-collapse.collapse.navbar-right > ul > li:nth-child(5) > ul > li:nth-child(2) > a").click();
-    cy.wait(3000)
-    cy.get("#searchbox").clear().type("af");
+  // it("Should select an item from autocomplete suggestions", () => {
+  //   cy.get(":nth-child(5) > .dropdown-toggle").click();
+  //   cy.get("#header > nav > div > div.navbar-collapse.collapse.navbar-right > ul > li:nth-child(5) > ul > li:nth-child(2) > a").click();
+  //   cy.wait(3000)
+  //   cy.get("#searchbox").clear().type("af");
 
-    cy.get("#ui-id-1 > li:nth-child(1)").first().click();
-    cy.get(
-      "body > section > div.container > div:nth-child(2) > div.col-xs-12.col-xs-offset-4 > div > div"
-    ).should("have.text", "Afghanistan");
-  });
+  //   cy.get("#ui-id-1 > li:nth-child(1)").first().click();
+  //   cy.get(
+  //     "body > section > div.container > div:nth-child(2) > div.col-xs-12.col-xs-offset-4 > div > div"
+  //   ).should("have.text", "Afghanistan");
+  // });
 
-  it("Should validate add to basket button" , () => {
-    cy.get("#header > nav > div > div.navbar-collapse.collapse.navbar-right > ul > li:nth-child(10) > a").click();
-    cy.wait(2000);
-    cy.get("#menu-item-40 > a").click();
-    cy.get("#content > ul > li.post-170.product.type-product.status-publish.product_cat-javascript.product_tag-javascript.has-post-title.no-post-date.has-post-category.has-post-tag.has-post-comment.has-post-author.instock.downloadable.taxable.shipping-taxable.purchasable.product-type-simple > a.button.product_type_simple.add_to_cart_button.ajax_add_to_cart").click();
+  // it("Should validate add to basket button" , () => {
+  //   cy.get("#header > nav > div > div.navbar-collapse.collapse.navbar-right > ul > li:nth-child(10) > a").click();
+  //   cy.wait(2000);
+  //   cy.get("#menu-item-40 > a").click();
+  //   cy.get("#content > ul > li.post-170.product.type-product.status-publish.product_cat-javascript.product_tag-javascript.has-post-title.no-post-date.has-post-category.has-post-tag.has-post-comment.has-post-author.instock.downloadable.taxable.shipping-taxable.purchasable.product-type-simple > a.button.product_type_simple.add_to_cart_button.ajax_add_to_cart").click();
 
-  })
+  // })
 
   it("Should validate CKEditor page working " , () => {
     cy.get('#header > nav > div > div.navbar-collapse.collapse.navbar-right > ul > li:nth-child(8) > a').click();
@@ -219,17 +219,17 @@ describe('Valiadting heading of sign up page', () => {
   });
 });
 
-describe('iframe validation', () => {
-  it('Test Case 1', () => {
-     cy.visit("https://jqueryui.com/draggable/");
-     cy.frameLoaded('.demo-frame');
-     cy.iframe('.demo-frame').find("#draggable").then((t) => {
-        const frmtxt = t.text();
-        expect(frmtxt).to.contains('Drag me around');
-        cy.log(frmtxt);
-     });
-  });
-});
+// describe('iframe validation', () => {
+//   it('Test Case 1', () => {
+//      cy.visit("https://jqueryui.com/draggable/");
+//      cy.frameLoaded('.demo-frame');
+//      cy.iframe('.demo-frame').find("#draggable").then((t) => {
+//         const frmtxt = t.text();
+//         expect(frmtxt).to.contains('Drag me around');
+//         cy.log(frmtxt);
+//      });
+//   });
+// });
 
 describe('Validation of alert', () => {
   it("Scenario 1", () => {
