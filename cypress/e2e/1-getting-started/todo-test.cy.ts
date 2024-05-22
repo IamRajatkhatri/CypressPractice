@@ -213,6 +213,7 @@ describe('Handling multiple windows', () => {
 describe('Valiadting heading of sign up page', () => {
   it('Scenario 1', () => {
     cy.visit("https://accounts.google.com");
+    cy.wait(2000)
     cy.get('.Tn0LBd').should('contain', 'Sign'); 
     cy.log("Validation complete")
   });
@@ -258,6 +259,7 @@ describe('Example Of How To Handle Shadow Dom in Cypress', () => {
     cy.url().should('include', 'explore?q=Math');
   });
 });
+
 
 
 
