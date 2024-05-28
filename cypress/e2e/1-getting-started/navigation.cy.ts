@@ -9,7 +9,7 @@ describe("Navigation Links", () => {
   });
 
   it("should not redirect 'Real World Examples' to incorrect pages", () => {
-    navigationPage.clickRealWorldExamples({ multiple: true });
+    navigationPage.clickRealWorldExamples();
     cy.url().should("eq", "https://learn.cypress.io/real-world-examples");
   });
 

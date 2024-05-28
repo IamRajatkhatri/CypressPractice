@@ -214,7 +214,7 @@ describe('Valiadting heading of sign up page', () => {
   it('Scenario 1', () => {
     cy.visit("https://accounts.google.com");
     cy.wait(2000)
-    cy.get('.Tn0LBd').should('contain', 'Sign'); 
+    cy.get('#headingText').should('contain', 'Sign'); 
     cy.log("Validation complete")
   });
 });
@@ -244,7 +244,8 @@ describe('Validation of alert', () => {
 describe('Example Of How To Handle Shadow Dom in Cypress', () => {
 
   before(() => {
-    cy.visit('https://books-pwakit.appspot.com/');
+    cy.viewport(1014, 748);
+    cy.visit("https://books-pwakit.appspot.com/");
   });
 
   it('Enter some data in text box and search then validate the URL', () => {
@@ -259,6 +260,51 @@ describe('Example Of How To Handle Shadow Dom in Cypress', () => {
     cy.url().should('include', 'explore?q=Math');
   });
 });
+
+describe('JQuery and Cypress Test Case1', () => {
+  it('Performing JQuery Operation', () => {
+    cy.viewport(1014, 748);
+    cy.request("https://demoqa.com/")
+  .its('body')
+  .then((html: string) => {
+    const titleMatch = html.match(/<title>([\s\S]*?)<\/title>/);
+    const title = titleMatch ? titleMatch[1] : 'Title not found';
+    cy.log('Title of Page is: ' + title);
+  });
+  });
+});
+
+describe('Tutorialspoint Test', () => {
+  let signInData: { email: string, password: string }; 
+  before(() => { 
+
+     cy.fixture('example').then((data: { email: string, password: string }) => {
+        signInData = data;
+     });
+  });
+  it('Test Case1', () => {
+    
+     cy.visit("https://www.linkedin.com/login");
+     cy.wait(1000);
+    
+     cy.get('#username').type(signInData.email);
+     cy.get('#password').type(signInData.password);
+  });
+});
+
+
+describe('Example of BaseUrl', () => {
+  it('Example of Baseurl', () => {
+    const baseUrl: string | null = Cypress.config().baseUrl;
+    if (baseUrl) {
+      cy.visit(baseUrl); 
+    } else {
+      throw new Error('Base URL is not defined in Cypress configuration');
+    }
+  });
+});
+
+
 
 
 

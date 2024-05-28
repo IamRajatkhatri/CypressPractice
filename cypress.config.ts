@@ -6,11 +6,16 @@ export default defineConfig({
     supportFile: false,
     specPattern: "cypress/e2e/**/*.cy.ts",
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+     
     },
     // video: true,
   },
+
+  env: {
+    theme: "dark"
+  },
   video:true,
+ // pageLoadTimeout: 20000 ,
   chromeWebSecurity: false,
   retries: 1,
   reporterOptions: {
@@ -20,6 +25,8 @@ export default defineConfig({
       overwrite: false,
       html: false,
       json: true
+    
+    }
     }
   }
-});
+);
