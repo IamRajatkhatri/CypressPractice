@@ -9,3 +9,4 @@ describe('Homepage Tests', () => {
     cy.url().should('eq', 'https://learn.cypress.io/');
   });
 });
+ 

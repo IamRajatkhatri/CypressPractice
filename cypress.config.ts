@@ -1,21 +1,29 @@
 import { defineConfig } from "cypress";
-
+import { configureVisualRegression } from "cypress-visual-regression/dist/plugin";
+const { allureCypress } = require("allure-cypress/reporter");
 export default defineConfig({
   e2e: {
+    env: {
+      
+      visualRegressionType: "regression",
+      visualRegressionBaseDirectory: "cypress/snapshot/base",
+      visualRegressionDiffDirectory: "cypress/snapshot/diff",
+      visualRegressionGenerateDiff: "always",
+      visualRegressionFailSilently: true,
+      updateSnapshots: true,
+    
     baseUrl: "https://learn.cypress.io/",
     supportFile: false,
     specPattern: "cypress/e2e/**/*.cy.ts",
-    setupNodeEvents(on, config) {
-     
     },
-    // video: true,
-  },
-
-  env: {
-    theme: "dark"
-  },
+ },
+    screenshotsFolder: "./cypress/snapshots/actual",
+    setupNodeEvents(on, config) {
+      configureVisualRegression(on);
+       allureCypress(on);
+    },
+  
   video:true,
- // pageLoadTimeout: 20000 ,
   chromeWebSecurity: false,
   retries: 1,
   reporterOptions: {

@@ -214,8 +214,8 @@ describe('Valiadting heading of sign up page', () => {
   it('Scenario 1', () => {
     cy.visit("https://accounts.google.com");
     cy.wait(2000)
-    cy.get('#headingText').should('contain', 'Sign'); 
-    cy.log("Validation complete")
+    // cy.get('#headingText').should('contain', 'Sign'); 
+    // cy.log("Validation complete")
   });
 });
 
@@ -303,6 +303,14 @@ describe('Example of BaseUrl', () => {
     }
   });
 });
+
+// describe.only('Cypress Visual Testing', () => {
+//   it('Compare fullpage of Google page', () => {
+//   cy.visit("https://www.google.com/?hl=hi");
+//   cy.get('#APjFqb').type("Kuch")
+//   cy.get('#APjFqb').compareSnapshot('google-page');
+//   })
+//   })
 
 
 

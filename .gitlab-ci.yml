@@ -28,4 +28,5 @@ tests:
   stage: test
   script:
     - npm run cy:run -- --config chromeWebSecurity=false
+    
 

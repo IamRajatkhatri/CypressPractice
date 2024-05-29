@@ -2,6 +2,9 @@
 import 'cypress-iframe';
 import './commands';
 import "cypress-runner-themes";
+import { addCompareSnapshotCommand } from 'cypress-visual-regression/dist/command';
+addCompareSnapshotCommand();
+
 const app = window.top;
 if (!app?.document.head.querySelector("[data-hide-command-log-request]")) {
   const style = app?.document.createElement("style");
