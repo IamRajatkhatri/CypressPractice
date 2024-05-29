@@ -4,7 +4,7 @@
   "passes": 1,
   "pending": 0,
   "failures": 0,
-  "start": "2024-05-28T13:39:32.781Z",
-  "duration": 8583,
+  "start": "2024-05-29T13:15:31.312Z",
+  "duration": 23853,
   "file": "cypress\\e2e\\1-getting-started\\homepage.cy.ts"
 }
