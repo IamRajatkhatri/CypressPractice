@@ -1,6 +1,6 @@
 import { defineConfig } from "cypress";
 //import { configureVisualRegression } from "cypress-visual-regression/dist/plugin";
-const { allureCypress } = require("allure-cypress/reporter");
+//const { allureCypress } = require("allure-cypress/reporter");
 export default defineConfig({
   e2e: {
     // env: {
@@ -19,7 +19,7 @@ export default defineConfig({
     screenshotsFolder: "./cypress/snapshots/actual",
     setupNodeEvents(on, config) {
      // configureVisualRegression(on);
-       allureCypress(on);
+       //allureCypress(on);
     },
   
   video:true,
