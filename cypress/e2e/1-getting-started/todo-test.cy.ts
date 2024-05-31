@@ -57,7 +57,7 @@ describe("Google Navigation", () => {
 
 describe("Tutorialspoint Test", function () {
 
-  it("Scenario 1", function () {
+  it("Test Case1", function () {
    
     cy.visit("https://www.letskodeit.com/practice");
     
@@ -311,6 +311,8 @@ describe('Example of BaseUrl', () => {
 //   cy.get('#APjFqb').compareSnapshot('google-page');
 //   })
 //   })
+
+
 
 
 
