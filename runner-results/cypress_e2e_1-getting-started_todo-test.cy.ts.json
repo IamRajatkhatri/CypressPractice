@@ -4,7 +4,7 @@
   "passes": 20,
   "pending": 0,
   "failures": 0,
-  "start": "2024-05-29T13:15:37.890Z",
-  "duration": 256040,
+  "start": "2024-05-31T05:02:30.613Z",
+  "duration": 313689,
   "file": "cypress\\e2e\\1-getting-started\\todo-test.cy.ts"
 }
