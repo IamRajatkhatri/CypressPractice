@@ -1,69 +1,28 @@
-/// <reference types="cypress" />
-// ***********************************************
-// This example commands.ts shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-//
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }
-// cypress/support/commands.ts
+// commands.ts
+Cypress.Commands.add('login', (username: string, password: string) => {
+  cy.visit('/login'); 
+  cy.get('#username').type(username);
+  cy.get('#password').type(password);
+  cy.get('button[type="submit"]').click();
+  cy.get('.user-profile').should('be.visible');
+});
 
-
+Cypress.Commands.add('disableXhrAndLogs', () => {
+  cy.intercept('GET', '**/*').as('xhrInterceptor');
+  cy.intercept('POST', '**/*').as('xhrInterceptor');
+  cy.intercept('PUT', '**/*').as('xhrInterceptor');
+  cy.intercept('DELETE', '**/*').as('xhrInterceptor');
   
-  Cypress.Commands.add('login', (username: string, password: string) => {
-    cy.visit('/login'); 
-    cy.get('#username').type(username);
-    cy.get('#password').type(password);
-    cy.get('button[type="submit"]').click();
-    cy.get('.user-profile').should('be.visible');
+  cy.window().then((win) => {
+    win.console.log = () => {};
   });
+});
 
-  Cypress.Commands.add('disableXhrAndLogs', () => {
-    cy.intercept('GET', '**/*').as('xhrInterceptor');
-    cy.intercept('POST', '**/*').as('xhrInterceptor');
-    cy.intercept('PUT', '**/*').as('xhrInterceptor');
-    cy.intercept('DELETE', '**/*').as('xhrInterceptor');
-    
-    cy.window().then((win) => {
-      win.console.log = () => {};
-    });
-  });
-  
-  
-declare  namespace Cypress {
-      interface Chainable {
-        login(username: string, password: string): void;
-        disableXhrAndLogs(): void;
-      }
+declare global {
+  namespace Cypress {
+    interface Chainable<Subject = any> {
+      login(username: string, password: string): void;
+      disableXhrAndLogs(): void;
     }
-   
-  
+  }
+}
