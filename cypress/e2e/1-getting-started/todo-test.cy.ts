@@ -49,9 +49,11 @@ describe("Tutorialspoint Test", function () {
 describe("Google Navigation", () => {
   it("Google Search", () => {
     cy.visit("https://www.google.com");
+
     search.googleSearch.type("Something");
     search.googleSearchBtn.click({force:true});
     search.searchResults.should('be.visible');
+
   });
 });
 
@@ -166,6 +168,7 @@ describe("Autocomplete functionality", () => {
     cy.visit("https://demo.automationtesting.in/Register.html");
     cy.wait(3000);
   });
+
   it("Should select an item from autocomplete suggestions", () => {
     cy.get(":nth-child(5) > .dropdown-toggle").click();
     cy.get("#header > nav > div > div.navbar-collapse.collapse.navbar-right > ul > li:nth-child(5) > ul > li:nth-child(2) > a").click();
@@ -186,11 +189,14 @@ describe("Autocomplete functionality", () => {
 
   })
 
+
   it("Should validate CKEditor page working " , () => {
     cy.get('#header > nav > div > div.navbar-collapse.collapse.navbar-right > ul > li:nth-child(8) > a').click();
     cy.get("#header > nav > div > div.navbar-collapse.collapse.navbar-right > ul > li.dropdown.open > ul > li:nth-child(2) > a").click();
     cy.wait(2000);
+
     cy.get(".cke_wysiwyg_frame").type("I am automation engineer");
+
   })
 });
 
@@ -219,6 +225,7 @@ describe('Valiadting heading of sign up page', () => {
   });
 });
 
+
 describe('iframe validation', () => {
   it('Test Case 1', () => {
      cy.visit("https://jqueryui.com/draggable/");
@@ -230,6 +237,7 @@ describe('iframe validation', () => {
      });
   });
 });
+
 
 describe('Validation of alert', () => {
   it("Scenario 1", () => {
@@ -405,6 +413,7 @@ describe("Delay the text entering in Cypress", () => {
     //cy.pause();
     cy.get('[id="input-password"]').type("Cypress123!!");
     cy.get('[type="submit"]').eq(0).click();
+
   }); 
 });
 
@@ -431,7 +440,12 @@ describe('Verify drag and drop', () => {
       cy.get('#cdk-drop-list-2').should('contain', $el.text());
     });
   });
-});
+
+  });
+  
+
+
+
 
 
 
